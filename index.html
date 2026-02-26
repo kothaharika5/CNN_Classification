@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animal Image Classification</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 420px;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .upload-box {
+            border: 2px dashed #aaa;
+            border-radius: 10px;
+            padding: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-box:hover {
+            border-color: #667eea;
+            background: #f7f8ff;
+        }
+
+        .upload-box p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .upload-box span {
+            display: block;
+            margin: 10px 0;
+            color: #999;
+        }
+
+        .upload-box button {
+            background: #667eea;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .upload-box button:hover {
+            background: #556cd6;
+        }
+
+        .preview img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .analyze-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #764ba2;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .analyze-btn:hover {
+            background: #5f3b87;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Animal Image Classification</h1>
+        <p class="subtitle">
+            Upload an image to analyze whether it is a Cat, Dog, or Neither
+        </p>
+
+        <div class="upload-box" onclick="imageInput.click()">
+            <input type="file" id="imageInput" accept="image/*" hidden>
+            <p>Drag & Drop Image Here</p>
+            <span>or</span>
+            <button type="button">Browse Image</button>
+        </div>
+
+        <div class="preview">
+            <img id="previewImage" alt="Preview">
+        </div>
+
+        <button class="analyze-btn">Analyze Image</button>
+
+        <div class="result">
+            <p>Prediction: <strong>---</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById("imageInput");
+        const previewImage = document.getElementById("previewImage");
+
+        imageInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                previewImage.src = URL.createObjectURL(file);
+                previewImage.style.display = "block";
+            }
+        });
+    </script>
+
+</body>
+</html>
